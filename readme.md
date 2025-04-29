@@ -1,8 +1,6 @@
 
 # 🌐 Network Lesson Summary
 
-## 📌 NetworkManager Overview
-
 - Introduced in Red Hat Enterprise Linux 7.
 - Manages dynamic network configuration.
 - Supports: Ethernet, Bridge, Bond, Teams, Wifi, Mobile.
@@ -53,6 +51,30 @@
   nmcli connection add type ethernet con-name eno33554968 ifname eno33554968 ip4 192.168.1.100 gw4 192.168.1.1
   nmcli connection modify eno33554968 ipv4.dns "8.8.8.8 8.8.4.4"
   nmcli -p connection show eno33554968
+  ```
+  - Modify IP address:
+  ```bash
+  nmcli connection modify eno33554968 ipv4.addresses 192.168.1.200/24
+  ```
+- Modify DNS servers:
+  ```bash
+  nmcli connection modify eno33554968 ipv4.dns "8.8.8.8 1.1.1.1"
+  ```
+- Set connection to start on boot:
+  ```bash
+  nmcli connection modify eno33554968 connection.autoconnect yes
+  ```
+- Activate a connection:
+  ```bash
+  nmcli connection up eno33554968
+  ```
+- Deactivate a connection:
+  ```bash
+  nmcli connection down eno33554968
+  ```
+- Delete a connection:
+  ```bash
+  nmcli connection delete eno33554968
   ```
 
 ## 🔧 `ip` Command Usage
